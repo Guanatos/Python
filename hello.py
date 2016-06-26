@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 my_str = "Hello World!!!"
 split = my_str.split()
 print(split)
