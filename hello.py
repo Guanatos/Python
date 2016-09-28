@@ -2,6 +2,7 @@
 my_str = "Hello World!!!"
 split = my_str.split()
 print(split)
+print(my_str.upper())
 A = list(range(10))
 print(A)
 B = [11,12,13,14]
