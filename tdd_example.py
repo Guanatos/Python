@@ -3,7 +3,7 @@
 import unittest
 
 def calculate_addition_string(expression):
-	return ''
+	return 0
 
 class TestAdditionMethod(unittest.TestCase):
 	def test_only_zero(self):
