@@ -13,13 +13,20 @@ class Hero():
     def getAlien(self, alien):
         return "Yes" if alien else "No"
 
-class Human():
+    def fly(self): print('Can fly')
+
+    @staticmethod
+    def make_car_sound():
+        print('VRoooommmm')
+
+class Human(Hero):
 # Class Object Attribute
+    honesty = False
 # Constructor
     def __init__(self): 
         print('Human Contructor')
 
-    def walk(self): print('A human can walk')
+    def walk(self): print('can walk')
 
 
 def main():
@@ -36,5 +43,7 @@ def main():
 
     daniel = Human()
     daniel.walk()
+    daniel.fly()
+    daniel.make_car_sound()
 
 if __name__ == "__main__": main()
