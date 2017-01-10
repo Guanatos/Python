@@ -23,23 +23,32 @@ def disp_rows(db, tbl):
         for row in cursor:
             print('  {}: {}: {}: {}'.format(row['prodid'], row['prodname'], row['prodcate'], row['proddesc']))
 
-##### Main #####
-def main():
-
-#def create_db():
-    db = sqlite3.connect('maquinas.db')
+###########################
+# Function to create tables
+###########################
+def create_db():
+    db = sqlite3.connect('vending.db')
     db.row_factory = sqlite3.Row
     print('Creating tables...')
-    print('CREATE TABLE maquinas')
-    db.execute('DROP TABLE IF EXISTS maquinas')
-    db.execute('CREATE TABLE maquinas ( maqid text PRIMARY KEY NOT NULL, maqmod text NOT NULL, maqloc text NOT NULL)')
-    print('CREATE TABLE producto')
-    db.execute('DROP TABLE IF EXISTS producto')
-    db.execute('CREATE TABLE producto ( prodid int PRIMARY KEY NOT NULL, prodname text NOT NULL, prodcate text NOT NULL, proddesc text)')
+    tablesx = ['maquinas','producto','visitas']
+    for i in tablesx:
+        print('CREATE TABLE ',i)
+        db.execute('DROP TABLE IF EXISTS {tn}'.format(tn=i))
+        print('DROP TABLE ',i)
+        if i == 'maquinas':
+           db.execute('CREATE TABLE maquinas ( maqid text PRIMARY KEY NOT NULL, maqmod text NOT NULL, maqloc text NOT NULL)')
+        elif i == 'producto':
+           db.execute('CREATE TABLE producto ( prodid int PRIMARY KEY NOT NULL, prodname text NOT NULL, prodcate text NOT NULL, proddesc text)')
+        elif i == 'visitas':
+           db.execute('CREATE TABLE visitas ( visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, amount REAL)')
 
+################
 ##### Main #####
-#def main():
-#    create_db()
+################
+def main():
+    create_db()
+    db = sqlite3.connect('vending.db')
+    db.row_factory = sqlite3.Row
 
 # Ask for the values
 #   maqidx = input("Numero Serial? ")
