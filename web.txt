@@ -1,0 +1,44 @@
+PHP
+http://php.net/manual/en/book.soap.php
+http://www.wsdltophp.com
+
+C/C++
+http://axis.apache.org/axis2/c/core
+
+Java
+Eclipse for Java EE Developers
+
+Android
+ksoap2
+http://code.google.com/p/ksoap2-android/
+
+https://android.googlesource.com/platform/frameworks/volley/
+OKHttp, Retrofit
+http://square.github.io/okhttp/
+http://square.github.io/retrofit/
+
+Python
+spyne
+
+Ruby
+XMLRPC4R
+
+Web Server
+http://plugins.jquery.com/soap/
+
+Adobe
+ColdFusion
+cfcomponent
+cfinvoke
+
+http://maps.googleapis.com/maps/api/geocode/json?address=California&sensor=false
+http://maps.googleapis.com/maps/api/geocode/xml?address=California&sensor=false
+
+http://hc.apache.org/httpclient-3.x/
+
+http://services.explorecalifornia.org/rss/tours.php
+
+OData
+SOAP at its core is a message format, REST architectural principals, OData is a combination of two.
+- Open Source
+

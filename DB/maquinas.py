@@ -7,7 +7,8 @@
 # Import #
 ##########
 import sqlite3
-import datetime
+from datetime import datetime,timedelta
+import time
 
 ##########
 # Global #
@@ -95,13 +96,15 @@ def test_insert_db():
     disp_rows(db,'producto')
 
 #  visitas ( visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, visitamount REAL)')
-    print('Inserting rows for visitas...')
-    today = datetime.date.today()
-    print(today)
-    insert(db,'visitas',dict(visitid = '123', visitdate = today, maqloc = 'FEDEX', visitamount = '2000'))
-    insert(db,'visitas',dict(visitid = '234', visitdate = today, maqloc = 'COTTON', visitamount = '2000'))
-    insert(db,'visitas',dict(visitid = '345', visitdate = today, maqloc = 'COMUDE', visitamount = '2000'))
-    insert(db,'visitas',dict(visitid = '456', visitdate = today, maqloc = 'TOSHIBA', visitamount = '2000'))
+    current_timestamp = time.time()
+#    print("Timestamp: ", current_timestamp)
+    datetime_ts = datetime.fromtimestamp(current_timestamp).strftime('%Y%m%d%H%M')
+    print("Timestamp to datetime: ", datetime_ts)
+    insert(db,'visitas',dict(visitid = '123', visitdate = datetime_ts, maqloc = 'FEDEX', visitamount = 2000))
+    insert(db,'visitas',dict(visitid = '234', visitdate = datetime_ts, maqloc = 'COTTON', visitamount = 2000))
+    insert(db,'visitas',dict(visitid = '345', visitdate = datetime_ts, maqloc = 'COMUDE', visitamount = 2000))
+    insert(db,'visitas',dict(visitid = '456', visitdate = datetime_ts, maqloc = 'TOSHIBA', visitamount = 2000))
+    print('Inserted successfully')
 # Retriving rows
     disp_rows(db,'visitas')
 
