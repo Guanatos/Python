@@ -18,12 +18,12 @@ db.execute('DROP TABLE IF EXISTS test2')
 db.execute('CREATE TABLE test2 ( t1 text )')
 
 def disp_rows1(db):
-    cursor = db.execute('SELECT t1, count() as cx FROM test1 GROUP BY t1 ')
+    cursor = db.execute('SELECT t1, count() AS cx FROM test1 GROUP BY t1 ')
     for row in cursor:
         print('  {}: {}'.format(row['t1'], row['cx']))
 
 def disp_rows2(db):
-    cursor = db.execute('SELECT t1, count() as cx FROM test2 GROUP BY t1 ')
+    cursor = db.execute('SELECT t1, count() AS cx FROM test2 GROUP BY t1 ')
     for row in cursor:
         print('  {}: {}'.format(row['t1'], row['cx']))
 
@@ -42,6 +42,12 @@ while i < len(inputb):
     db.commit()
     i = i + 1
 disp_rows2(db)
+
+
+cursor = db.execute('SELECT t1 AS tx, count() AS cx FROM test1 GROUP BY tx INNER JOIN test2 ON tx = ty UNION SELECT t1 as ty, count() as cy FROM test2 GROUP BY ty LEFT OUTER JOIN test2 ON tx = ty')
+for row in cursor:
+    print('  {}: {}'.format(row['tx'], row['cx']))
+
 
 # len proporciona la longitud
 #lenx = len(inputa)
