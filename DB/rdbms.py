@@ -45,9 +45,13 @@ class database:
         del self._filename
 
 def insert():
+    continuax = True
     while True:
 # visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, visitamount
-        visitdatex = input("Fecha de visita
+        visitdatex = input("Fecha de visita:")
+        maqlocx = input("Localidad:")
+        visitqty = input("Venta:")
+        return True if input("") else False
 
 # Main body
 def main():
