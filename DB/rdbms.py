@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+# Based on sqlite3-class.py by Bill Weinman [http://bw.org/]
 # daniel.nuno@gmail.com
 
 import sqlite3
 
 # This class will be used to handle sqlite3 databases
-class rdbms:
+class database:
 
 # Contructor, taking filename and table name, default table name 'test'
 # **kwargs, take an arbitrary number of keyword arguments, dictionary
@@ -32,8 +33,10 @@ class rdbms:
 
     @property
     def table(self): return self._table
+
     @table.setter
     def table(self, t): self._table = t
+
     @table.deleter
     def table(self): self._table = 'test'
 
@@ -41,11 +44,13 @@ class rdbms:
         self._db.close()
         del self._filename
 
+def insert():
+    while True:
+# visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, visitamount
+        visitdatex = input("Fecha de visita
+
 # Main body
 def main():
-    db = rdbms(filename = 'test.db', table = 'test')
-    print(db)
-    print(db.filename)
-    print(db.table)
+    db = database(filename = 'test.db', table = 'test')
 
 if __name__ == "__main__": main()
