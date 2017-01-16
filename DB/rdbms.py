@@ -44,17 +44,25 @@ class database:
         self._db.close()
         del self._filename
 
-def insert():
+# Insertar Registros
+def insert(db):
     continuax = True
-    while True:
+    while continuax == True:
 # visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, visitamount
         visitdatex = input("Fecha de visita:")
         maqlocx = input("Localidad:")
         visitqty = input("Venta:")
-        return True if input("") else False
+        answerx = input("Agregar otro registro? (y/n)")
+        answerx = answerx.upper()
+        print(answerx)
+        if answerx == 'Y':
+           continuax = True
+        else:
+           continuax = False
 
 # Main body
 def main():
     db = database(filename = 'test.db', table = 'test')
+    insert(db)
 
 if __name__ == "__main__": main()
