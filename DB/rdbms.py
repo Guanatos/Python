@@ -61,7 +61,7 @@ def insert(db):
         vdatex = input("Fecha de visita: ")
         maqlocx = input("Localidad: ")
         vamountx = input("Venta: ")
-        db.sql_do('INSERT INTO visitas (visitdate, maqloc, visitamount) VALUES visitdate = vdatex, maqloc = maqlocx, visitamount = vamountx)')
+        db.sql_do('INSERT INTO visitas (visitdate, maqloc, visitamount) VALUES (?, ?, ?)',vdatex,maqlocx,vamountx)
         db.commit()
         answerx = input("Agregar otro registro? (y/n) ")
         answerx = answerx.upper()
