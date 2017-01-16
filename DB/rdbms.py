@@ -44,11 +44,17 @@ class database:
         self._db.close()
         del self._filename
 
+# Crear Tablas
+def create_table(db):
+    db.sql_do('DROP TABLE IF EXISTS visitas')
+    db.sql_do('CREATE TABLE visitas (visitid INTEGER PRIMARY KEY AUTOINCREMENT, visitdate date NOT NULL, maqloc text NOT NULL, visitamount REAL)')
+
 # Insertar Registros
+# visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, visitamount
+
 def insert(db):
     continuax = True
     while continuax == True:
-# visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, visitamount
         visitdatex = input("Fecha de visita:")
         maqlocx = input("Localidad:")
         visitqty = input("Venta:")
@@ -63,6 +69,7 @@ def insert(db):
 # Main body
 def main():
     db = database(filename = 'test.db', table = 'test')
+    create_table(db)
     insert(db)
 
 if __name__ == "__main__": main()
