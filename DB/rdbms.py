@@ -45,9 +45,12 @@ class database:
         del self._filename
 
 # Crear Tablas
-def create_table(db):
-    db.sql_do('DROP TABLE IF EXISTS visitas')
-    db.sql_do('CREATE TABLE visitas (visitid INTEGER PRIMARY KEY AUTOINCREMENT, visitdate date NOT NULL, maqloc text NOT NULL, visitamount REAL)')
+def create_table(db,tablex):
+    if tablex == 'visitas':
+        db.sql_do('DROP TABLE IF EXISTS visitas')
+        db.sql_do('CREATE TABLE visitas (visitid INTEGER PRIMARY KEY AUTOINCREMENT, visitdate date NOT NULL, maqloc text NOT NULL, visitamount real)')
+    elsif:
+    else:
 
 # Insertar Registros
 # visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, visitamount
@@ -69,7 +72,7 @@ def insert(db):
 # Main body
 def main():
     db = database(filename = 'test.db', table = 'test')
-    create_table(db)
+    create_table(db,'visitas')
     insert(db)
 
 if __name__ == "__main__": main()
