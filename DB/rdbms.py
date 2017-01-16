@@ -49,8 +49,8 @@ def create_table(db,tablex):
     if tablex == 'visitas':
         db.sql_do('DROP TABLE IF EXISTS visitas')
         db.sql_do('CREATE TABLE visitas (visitid INTEGER PRIMARY KEY AUTOINCREMENT, visitdate date NOT NULL, maqloc text NOT NULL, visitamount real)')
-    elsif:
-    else:
+#    elsif:
+#    else:
 
 # Insertar Registros
 # visitid int PRIMARY KEY NOT NULL, visitdate date NOT NULL, maqloc text NOT NULL, visitamount
@@ -58,12 +58,14 @@ def create_table(db,tablex):
 def insert(db):
     continuax = True
     while continuax == True:
-        visitdatex = input("Fecha de visita:")
-        maqlocx = input("Localidad:")
-        visitqty = input("Venta:")
-        answerx = input("Agregar otro registro? (y/n)")
+        vdatex = input("Fecha de visita: ")
+        maqlocx = input("Localidad: ")
+        vamountx = input("Venta: ")
+        db.sql_do('INSERT INTO visitas (visitdate, maqloc, visitamount) VALUES visitdate = vdatex, maqloc = maqlocx, visitamount = vamountx)')
+        db.commit()
+        answerx = input("Agregar otro registro? (y/n) ")
         answerx = answerx.upper()
-        print(answerx)
+#        print(answerx)
         if answerx == 'Y':
            continuax = True
         else:
