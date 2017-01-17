@@ -56,8 +56,10 @@ class database:
 
     @property
     def table(self): return self._table
+
     @table.setter
     def table(self, t): self._table = t
+
     @table.deleter
     def table(self): self._table = 'test'
 
@@ -65,13 +67,29 @@ class database:
             self._db.close()
             del self._filename
 
+##################
+# create databases
+##################
+def create_table(db,tablex):
+    if tablex == 'visitas':
+        db.sql_do('DROP TABLE IF EXISTS visitas')
+        db.sql_do('CREATE TABLE visitas (visitid INTEGER PRIMARY KEY AUTOINCREME
+NT, visitdate date NOT NULL, maqloc text NOT NULL, visitamount real)')
+    elsif tablex == 'test':
+        print('Create table test')
+        db.sql_do('drop table if exists test')
+        db.sql_do('create table test ( t1 text, i1 int )')
+#    else:
+
+########
+# main
+########
 def main():
     db = database(filename = 'test.db', table = 'test')
-
-    print('Create table test')
-    db.sql_do('drop table if exists test')
-    db.sql_do('create table test ( t1 text, i1 int )')
-
+# create tables
+#    create_table(db,'visitas')
+    create_table(db,'test')
+#
     print('Create rows')
     db.insert(dict(t1 = 'one', i1 = 1))
     db.insert(dict(t1 = 'two', i1 = 2))
