@@ -63,6 +63,9 @@ class database:
     @table.deleter
     def table(self): self._table = 'test'
 
+    def commit(self):
+            self._db.commit()
+
     def close(self):
             self._db.close()
             del self._filename
@@ -73,13 +76,40 @@ class database:
 def create_table(db,tablex):
     if tablex == 'visitas':
         db.sql_do('DROP TABLE IF EXISTS visitas')
-        db.sql_do('CREATE TABLE visitas (visitid INTEGER PRIMARY KEY AUTOINCREME
-NT, visitdate date NOT NULL, maqloc text NOT NULL, visitamount real)')
-    elsif tablex == 'test':
+        db.sql_do('CREATE TABLE visitas (visitid INTEGER PRIMARY KEY AUTOINCREMENT, visitdate date NOT NULL, maqloc text NOT NULL, visitamount real)')
+    elif tablex == 'test':
         print('Create table test')
         db.sql_do('drop table if exists test')
         db.sql_do('create table test ( t1 text, i1 int )')
 #    else:
+
+##################
+# add new records
+##################
+def add_new_records(db):
+    continuax = True
+    while continuax:
+        vdatex = input("Fecha de visita: ")
+        maqlocx = input("Localidad: ")
+        vamountx = input("Venta: ")
+        db.sql_do('INSERT INTO visitas (visitdate, maqloc, visitamount) VALUES (?, ?, ?)',vdatex,maqlocx,vamountx)
+        db.commit()
+        answerx = 'x'
+        print("initial answer",answerx)
+        print("Type:")
+        while answerx != "y" or answerx != "n":
+            answerx = input("Agregar otro registro? (y/n) ")
+            print(answerx)
+            answerx = answerx.lower()
+            print(answerx)
+            if answerx == "y":
+               print("Continuar Y:",continuax)
+               continuax = True
+            elif answerx == "n":
+               continuax = False
+               print("Continuar N:",continuax)
+            else:
+               print("should be y or n ...")
 
 ########
 # main
@@ -89,6 +119,7 @@ def main():
 # create tables
 #    create_table(db,'visitas')
     create_table(db,'test')
+    add_new_records(db)
 #
     print('Create rows')
     db.insert(dict(t1 = 'one', i1 = 1))
