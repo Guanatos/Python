@@ -94,28 +94,29 @@ def add_new_records(db):
         vamountx = input("Venta: ")
         db.sql_do('INSERT INTO visitas (visitdate, maqloc, visitamount) VALUES (?, ?, ?)',vdatex,maqlocx,vamountx)
         db.commit()
-        answerx = 'y'
-        print("initial answer",answerx)
-        print("Type:")
-        while answerx == 'y':
+        answerx = 'x'
+#        print("initial answer",answerx)
+#        print("Type:")
+        while answerx != 'n' or answer != 'y':
             answerx = input("Agregar otro registro? (y/n) ")
-            print(answerx)
+#            print(answerx)
             answerx = answerx.lower()
-            print(answerx)
+            answerx = answerx.strip()
+#            print(answerx)
             if answerx == "y":
-               print("Continuar Y:",continuax)
+#               print("Continuar Y:",continuax)
                continuax = True
-               continue
+               break
             elif answerx == "n":
                continuax = False
-               print("Continuar N:",continuax)
+#               print("Continuar N:",continuax)
                break
             else:
                print("should be y or n ...")
-            if answerx == "y":
-               print("Joaquin")
-            elif answerx == "n":
-               print("Santana")
+#            if answerx == "y":
+#               print("Joaquin")
+#            elif answerx == "n":
+#               print("Santana")
 
 ########
 # main
