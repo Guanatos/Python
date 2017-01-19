@@ -125,7 +125,7 @@ def main():
     db = database(filename = 'test.db', table = 'test')
 # create tables
 #    create_table(db,'visitas')
-    create_table(db,'test')
+#    create_table(db,'test')
     add_new_records(db)
 #
     print('Create rows')
